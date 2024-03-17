@@ -22,7 +22,7 @@ def nibble_swap(x: int) -> int:
 
 def xlat2(s: str, init: int) -> str:
     x = init
-    return [(x := nibble_swap(x + i + 0x90)) for i in xlat(s)]
+    return [(x := (nibble_swap(x + i) + 0x90) & 0xFF) for i in xlat(s)]
 
 def generate_table_entry(c: str) -> str:
     x = conv(c)
